@@ -1,4 +1,5 @@
-﻿using TwaijriAPI.Bal.Services;
+﻿using Microsoft.Extensions.Options;
+using TwaijriAPI.Bal.Services;
 using TwaijriAPI.Dal;
 
 namespace TwaijriAPI.Pal.Startup;
@@ -17,6 +18,18 @@ public static class DependencyInjectionSetup
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        #endregion
+
+        #region CORS Configuration
+        services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
+        });
         #endregion
 
         return services;

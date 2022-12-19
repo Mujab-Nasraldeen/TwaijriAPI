@@ -16,6 +16,7 @@ var app = builder.Build();
 
 app.ConfigureSwagger();
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
