@@ -85,7 +85,7 @@ public class InvoiceController : ControllerBase
     }
 
     [HttpPut(ApiRoute.Invoice.UpdateInvoice)]
-    public async Task<IActionResult> UpdateInvoice([FromBody] AddInvoiceRequestDto req)
+    public async Task<IActionResult> UpdateInvoice([FromBody] UpdateInvoiceRequestDto req)
     {
         try
         {

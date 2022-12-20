@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using TwaijriAPI.Bal.Dtos;
 using TwaijriAPI.Dal;
 using TwaijriAPI.Dal.Enums;
@@ -16,7 +15,7 @@ public interface IInvoiceService
     List<InvoiceResponseDto> GetNotPaidInvoices();
     Task<InvoiceResponseDto> GetInvoiceById(Guid id);
     Task<BaseResponse> AddInvoice(AddInvoiceRequestDto req);
-    Task<BaseResponse> UpdateInvoice(AddInvoiceRequestDto req);
+    Task<BaseResponse> UpdateInvoice(UpdateInvoiceRequestDto req);
     Task<BaseResponse> DeleteInvoice(Guid id);
 }
 #endregion
@@ -97,11 +96,11 @@ public class InvoiceService : IInvoiceService
         }
     }
 
-    public async Task<BaseResponse> UpdateInvoice(AddInvoiceRequestDto req)
+    public async Task<BaseResponse> UpdateInvoice(UpdateInvoiceRequestDto req)
     {
         try
         {
-            var invoice = _mapper.Map<AddInvoiceRequestDto, Invoice>(req);
+            var invoice = _mapper.Map<UpdateInvoiceRequestDto, Invoice>(req);
 
             _unitOfWork.Invoice.UpdateAsync(invoice);
             await _unitOfWork.Commit();

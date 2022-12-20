@@ -11,6 +11,10 @@ public class InvoiceProfile : Profile
         CreateMap<AddInvoiceRequestDto, Invoice>();
         #endregion
 
+        #region Update Invoice Request
+        CreateMap<UpdateInvoiceRequestDto, Invoice>();
+        #endregion
+
         #region Invoice Response
         CreateMap<Invoice, InvoiceResponseDto>()
             .ForMember(p => p.InvoiceId, opt => opt.MapFrom(x => x.Id))
