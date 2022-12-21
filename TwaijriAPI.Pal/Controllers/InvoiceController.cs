@@ -29,7 +29,7 @@ public class InvoiceController : ControllerBase
     }
 
     [HttpGet(ApiRoute.Invoice.GetPaidInvoices)]
-    public async Task<IActionResult> GetPaidInvoices()
+    public IActionResult GetPaidInvoices()
     {
         try
         {
@@ -43,7 +43,7 @@ public class InvoiceController : ControllerBase
     }
 
     [HttpGet(ApiRoute.Invoice.GetNotPaidInvoices)]
-    public async Task<IActionResult> GetNotPaidInvoices()
+    public IActionResult GetNotPaidInvoices()
     {
         try
         {
