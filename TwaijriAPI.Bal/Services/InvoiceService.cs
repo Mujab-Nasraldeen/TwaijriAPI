@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using TwaijriAPI.Bal.Dtos;
 using TwaijriAPI.Dal;
 using TwaijriAPI.Dal.Enums;
@@ -46,8 +47,7 @@ public class InvoiceService : IInvoiceService
     {
         var invoices = _unitOfWork.Invoice.GetMany(p => p.State == InvoiceState.Paid)
             .Include(p => p.Customer)
-            .ToListAsync();
-
+            .ToList();
 
         var response = _mapper.Map<List<InvoiceResponseDto>>(invoices);
         return response;
@@ -57,7 +57,7 @@ public class InvoiceService : IInvoiceService
     {
         var invoices = _unitOfWork.Invoice.GetMany(p => p.State == InvoiceState.NotPaid)
             .Include(p => p.Customer)
-            .ToListAsync();
+            .ToList();
 
         var response = _mapper.Map<List<InvoiceResponseDto>>(invoices);
         return response;
